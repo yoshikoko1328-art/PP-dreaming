@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>オセアニアの神話・精霊図鑑 | Oceania Mythology Guide</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        sand: {
+                            50: '#FFFDF7',
+                            100: '#FEF9E7',
+                            200: '#F5E6CA',
+                            300: '#EEDC82',
+                            400: '#D4AF37',
+                            500: '#C59B27',
+                            800: '#5C4A1E',
+                            900: '#3A2E12',
+                        },
+                        beige: {
+                            100: '#FAF7F2',
+                            200: '#F5F5DC',
+                            300: '#E6E2D3',
+                            400: '#D2B48C',
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['Georgia', 'Cambria', 'Hiragino Mincho ProN', 'serif'],
+                        sans: ['Inter', 'Hiragino Sans', 'Meiryo', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #FFFDF7;
+            color: #3A2E12;
+        }
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #B8860B 0%, #D4AF37 50%, #8B6508 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero-bg {
+            background-color: #FEF9E7;
+            background-image: radial-gradient(#EEDC82 0.75px, transparent 0.75px), radial-gradient(#EEDC82 0.75px, #FEF9E7 0.75px);
+            background-size: 30px 30px;
+            background-position: 0 0, 15px 15px;
+        }
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px -6px rgba(212, 175, 55, 0.25);
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FEF9E7;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #D4AF37;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #B8860B;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased min-h-screen flex flex-col">
+
+    <!-- Header / Hero Section -->
+    <header class="hero-bg border-b border-sand-300 py-12 px-4 sm:px-6 lg:px-8 text-center relative overflow-hidden">
+        <div class="max-w-4xl mx-auto relative z-10">
+            <span class="inline-block px-3 py-1 mb-3 text-xs tracking-widest font-semibold uppercase text-sand-800 bg-sand-200 border border-sand-300 rounded-full">
+                Oceanian Mythology & Folklore
+            </span>
+            <h1 class="text-3xl sm:text-5xl font-serif font-bold tracking-tight text-sand-900 mb-4">
+                オセアニアの神話・精霊図鑑
+            </h1>
+            <p class="text-base sm:text-lg text-sand-800 leading-relaxed max-w-2xl mx-auto font-light">
+                広大な太平洋を舞台に紡がれる4つの地域（オーストラリア・ドリーミング、ポリネシア、メラネシア、ミクロネシア）の創世神・守護神と、畏怖された邪神・魔獣・悪霊の合計40体を解説するインタラクティブガイドです。
+            </p>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-10">
+
+        <!-- Region Navigation Tabs -->
+        <section class="space-y-4">
+            <h2 class="text-center text-xs font-semibold uppercase tracking-widest text-sand-800">地域を選択</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-4xl mx-auto" id="regionTabs">
+                <button onclick="selectRegion('australia')" id="tab-australia" 
+                    class="region-tab active flex flex-col items-center justify-center p-4 rounded-xl border-2 transition-all font-serif font-bold text-sm sm:text-base border-sand-400 bg-sand-100 text-sand-900 shadow-sm">
+                    <i class="fa-solid fa-sun text-sand-400 mb-1 text-lg"></i>
+                    オーストラリア
+                    <span class="text-xs font-normal text-sand-800 font-sans mt-0.5">ドリーミング / アボリジニ</span>
+                </button>
+                <button onclick="selectRegion('polynesia')" id="tab-polynesia" 
+                    class="region-tab flex flex-col items-center justify-center p-4 rounded-xl border-2 border-sand-200 bg-white text-sand-800 hover:border-sand-300 transition-all font-serif font-bold text-sm sm:text-base">
+                    <i class="fa-solid fa-water text-sand-400 mb-1 text-lg"></i>
+                    ポリネシア
+                    <span class="text-xs font-normal text-sand-800 font-sans mt-0.5">ハワイ・マクリ・タヒチ</span>
+                </button>
+                <button onclick="selectRegion('melanesia')" id="tab-melanesia" 
+                    class="region-tab flex flex-col items-center justify-center p-4 rounded-xl border-2 border-sand-200 bg-white text-sand-800 hover:border-sand-300 transition-all font-serif font-bold text-sm sm:text-base">
+                    <i class="fa-solid fa-mountain text-sand-400 mb-1 text-lg"></i>
+                    メラネシア
+                    <span class="text-xs font-normal text-sand-800 font-sans mt-0.5">ソロモン・バヌアツ・PNG</span>
+                </button>
+                <button onclick="selectRegion('micronesia')" id="tab-micronesia" 
+                    class="region-tab flex flex-col items-center justify-center p-4 rounded-xl border-2 border-sand-200 bg-white text-sand-800 hover:border-sand-300 transition-all font-serif font-bold text-sm sm:text-base">
+                    <i class="fa-solid fa-compass text-sand-400 mb-1 text-lg"></i>
+                    ミクロネシア
+                    <span class="text-xs font-normal text-sand-800 font-sans mt-0.5">パラオ・グアム・ヤップ</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- Interactive Map and Region Intro Section -->
+        <section class="bg-white rounded-2xl border border-sand-200 p-4 sm:p-6 shadow-sm grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+            <!-- Map Container -->
+            <div class="lg:col-span-7 bg-beige-100 rounded-xl overflow-hidden border border-sand-200 relative min-h-[300px] sm:min-h-[380px]">
+                <div class="absolute top-3 left-3 z-10 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-lg border border-sand-300 text-xs font-semibold text-sand-900 shadow-sm flex items-center gap-1.5">
+                    <i class="fa-solid fa-map-pin text-sand-400"></i>
+                    <span id="mapLabel">オーストラリア大陸 (ドリーミング)</span>
+                </div>
+                <iframe id="googleMapIframe" 
+                    class="w-full h-full min-h-[300px] sm:min-h-[380px] border-0" 
+                    loading="lazy" 
+                    allowfullscreen
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15000000!2d133.7751!3d-25.2744!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2b2bfd076787c5df%3A0x269d7a965778a483!2sAustralia!5e1!3m2!1sja!2sjp!4v1710000000000">
+                </iframe>
+            </div>
+
+            <!-- Region Overview -->
+            <div class="lg:col-span-5 flex flex-col justify-between bg-beige-100/50 p-5 rounded-xl border border-sand-200">
+                <div>
+                    <div class="flex items-center gap-2 mb-2">
+                        <span id="regionBadge" class="px-2.5 py-0.5 bg-sand-300 text-sand-900 text-xs font-bold rounded-md">Region 01</span>
+                        <h3 id="regionTitle" class="text-2xl font-serif font-bold text-sand-900">オーストラリア (ドリーミング)</h3>
+                    </div>
+                    <p id="regionDesc" class="text-sm text-sand-800 leading-relaxed my-3">
+                        万物が創造された太古の時代「ドリームタイム（ドリーミング）」の神話体系。精霊たちは大地を歩み、山・川・生き物・聖なる掟を創造した後に大地そのもの（岩や水脈）となって眠りについています。
+                    </p>
+                </div>
+                
+                <div class="pt-4 border-t border-sand-200/80 mt-2 space-y-2">
+                    <div class="flex justify-between text-xs text-sand-800 font-medium">
+                        <span>収録エントリティ数</span>
+                        <span class="font-bold text-sand-900">全10体（創世神・善神 5 / 邪神・魔獣 5）</span>
+                    </div>
+                    <div class="w-full bg-sand-200 rounded-full h-2">
+                        <div class="bg-sand-400 h-2 rounded-full w-full"></div>
+                    </div>
+                    <p class="text-xs text-sand-800 italic pt-1">
+                        <i class="fa-solid fa-circle-info mr-1 text-sand-400"></i>タブやフィルターで表示する精霊を絞り込めます。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Search & Category Filters -->
+        <section class="flex flex-col sm:flex-row gap-4 items-center justify-between bg-sand-100 p-4 rounded-xl border border-sand-300">
+            <!-- Category Radio / Buttons -->
+            <div class="flex items-center gap-2 w-full sm:w-auto overflow-x-auto pb-1 sm:pb-0">
+                <button onclick="setCategoryFilter('all')" id="filter-all" 
+                    class="filter-btn px-4 py-2 rounded-lg text-xs font-bold transition-all bg-sand-900 text-white shadow-sm whitespace-nowrap">
+                    すべて (10体)
+                </button>
+                <button onclick="setCategoryFilter('god')" id="filter-god" 
+                    class="filter-btn px-4 py-2 rounded-lg text-xs font-bold transition-all bg-white text-sand-800 border border-sand-300 hover:bg-sand-200 whitespace-nowrap">
+                    <i class="fa-solid fa-sun text-amber-500 mr-1"></i>創世神・善神 (5体)
+                </button>
+                <button onclick="setCategoryFilter('monster')" id="filter-monster" 
+                    class="filter-btn px-4 py-2 rounded-lg text-xs font-bold transition-all bg-white text-sand-800 border border-sand-300 hover:bg-sand-200 whitespace-nowrap">
+                    <i class="fa-solid fa-skull text-red-600 mr-1"></i>邪神・魔獣・悪霊 (5体)
+                </button>
+            </div>
+
+            <!-- Search Bar -->
+            <div class="relative w-full sm:w-64">
+                <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 transform -translate-y-1/2 text-sand-400 text-sm"></i>
+                <input type="text" id="searchInput" oninput="handleSearch()" placeholder="名前やキーワードで検索..." 
+                    class="w-full pl-9 pr-4 py-2 text-xs bg-white border border-sand-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sand-400 text-sand-900 placeholder-sand-800">
+            </div>
+        </section>
+
+        <!-- Entities Grid -->
+        <section>
+            <div id="entitiesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+                <!-- Dynamic cards populated by JavaScript -->
+            </div>
+            
+            <!-- Empty state -->
+            <div id="emptyState" class="hidden text-center py-12 bg-white rounded-xl border border-dashed border-sand-300">
+                <i class="fa-solid fa-ghost text-4xl text-sand-300 mb-3"></i>
+                <p class="text-sand-800 text-sm font-medium">該当する神々や魔獣が見つかりませんでした。</p>
+                <button onclick="resetFilters()" class="mt-3 text-xs text-sand-900 underline font-semibold">フィルターをリセット</button>
+            </div>
+        </section>
+
+        <!-- MLA Works Cited / References Section -->
+        <section class="mt-16 bg-white rounded-2xl border border-sand-300 p-6 sm:p-8 shadow-sm">
+            <div class="border-b border-sand-200 pb-4 mb-6 flex items-center justify-between">
+                <div>
+                    <span class="text-xs font-semibold uppercase tracking-widest text-sand-400">Academic References</span>
+                    <h2 class="text-xl sm:text-2xl font-serif font-bold text-sand-900">参考文献 (Works Cited - MLA形式)</h2>
+                </div>
+                <i class="fa-solid fa-book-bookmark text-2xl text-sand-300"></i>
+            </div>
+            
+            <p class="text-xs text-sand-800 mb-6 leading-relaxed">
+                本図鑑の記述は、オセアニア地域・アボリジニ神話（ドリーミング）および太平洋島嶼部民俗学に関する以下の学術文献・標準資料を参考にして構築されています。表記はMLA (Modern Language Association) 形式の標準規格に準拠しています。
+            </p>
+
+            <ol class="space-y-4 font-serif text-xs sm:text-sm text-sand-900 pl-4 list-decimal marker:text-sand-400 marker:font-bold">
+                <li class="pl-2 leading-relaxed">
+                    Elkin, A. P. <i>The Australian Aborigines: How to Understand Them</i>. 5th ed., Angus & Robertson, 1979.
+                </li>
+                <li class="pl-2 leading-relaxed">
+                    Craig, Robert D. <i>Dictionary of Polynesian Mythology</i>. Greenwood Press, 1989.
+                </li>
+                <li class="pl-2 leading-relaxed">
+                    Knappert, Jan. <i>Pacific Mythology: An Encyclopedia of Myth and Legend</i>. Diamond Books, 1995.
+                </li>
+                <li class="pl-2 leading-relaxed">
+                    Cowan, James. <i>Myths and Legends of the Australian Aboriginals</i>. Reed Books, 1994.
+                </li>
+                <li class="pl-2 leading-relaxed">
+                    Poignant, Roslyn. <i>Oceanic Mythology: Polynesia, Micronesia, Melanesia, Australia</i>. Paul Hamlyn, 1967.
+                </li>
+            </ol>
+        </section>
+
+    </main>
+
+    <!-- Detailed Modal -->
+    <div id="entityModal" class="fixed inset-0 bg-sand-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl border border-sand-300 max-w-xl w-full p-6 sm:p-8 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-sand-400 hover:text-sand-900 w-8 h-8 flex items-center justify-center rounded-full bg-sand-100 hover:bg-sand-200 transition-colors">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+            <div id="modalContent">
+                <!-- Dynamic Content Loaded via JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-sand-100 border-t border-sand-300 py-8 px-4 text-center text-xs text-sand-800 mt-12">
+        <div class="max-w-4xl mx-auto space-y-2">
+            <p class="font-serif font-bold text-sand-900 text-sm">オセアニアの神話・精霊図鑑 (Oceania Mythology Guide)</p>
+            <p>© 2026 Oceanic Cultural Studies & Mythological Archive. Single-page Web Interactive.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Data and Controller Logic -->
+    <script>
+        // Data Structure for the 40 Entities across 4 Regions
+        const mythologyData = {
+            australia: {
+                title: "オーストラリア (ドリーミング)",
+                badge: "Region 01",
+                mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15000000!2d133.7751!3d-25.2744!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2b2bfd076787c5df%3A0x269d7a965778a483!2sAustralia!5e1!3m2!1sja!2sjp!4v1710000000000",
+                mapLabel: "オーストラリア大陸 (ドリーミング)",
+                description: "万物が創造された太古の時代「ドリームタイム（ドリーミング）」の神話体系。精霊たちは大地を歩み、山・川・生き物・聖なる掟を創造した後に大地そのもの（岩や水脈）となって眠りについています。",
+                entities: [
+                    // Gods / Good Spirits
+                    {
+                        id: "aus-1",
+                        name: "バイアメ",
+                        originalName: "Baiame",
+                        type: "god",
+                        categoryLabel: "最高創世神",
+                        culture: "東部アボリジニ (Kamilaroi / Eora)",
+                        symbol: "天空・雨・法と掟",
+                        icon: "fa-crown",
+                        shortDesc: "東部アボリジニ伝承の最高神・天界の創造主。",
+                        fullDesc: "大地に雨を降らせて豊かな植物や生命を育み、人々に生活の術や聖なる掟（ドリーミングの教え）を授けた存在。すべての掟を守らせた後、天界へと昇り人々を見守り続けていると信じられています。"
+                    },
+                    {
+                        id: "aus-2",
+                        name: "ウングル / ユルルングル",
+                        originalName: "Ungud / Yurlungur (Rainbow Serpent)",
+                        type: "god",
+                        categoryLabel: "大地の蛇神",
+                        culture: "北部・西部アボリジニ",
+                        symbol: "水脈・虹・生命の循環",
+                        icon: "fa-water",
+                        shortDesc: "「虹の蛇」として知られる生命と水脈の大神。",
+                        fullDesc: "乾いた大地に雨をもたらし、河川や水たまりを作り出した万物の源泉。不敬な者を呑み込む怒りの側面を持ちつつも、生命の繁殖や精神的再生を掌るオセアニアを代表する大精霊です。"
+                    },
+                    {
+                        id: "aus-3",
+                        name: "ボンジル",
+                        originalName: "Bunjil",
+                        type: "god",
+                        categoryLabel: "創造の鷲神",
+                        culture: "南部アボリジニ (Kulin nation)",
+                        symbol: "楔尾ワシ・秩序・風",
+                        icon: "fa-feather",
+                        shortDesc: "楔尾ワシの姿をした慈愛深い創造神。",
+                        fullDesc: "人間や大地、自然法則を作り上げた二人の妻を持つ創造者。大地の創世を終えた後、猛烈な嵐を起こして自らを天空へと吹き上げ、星（アルタイル）となって現在も地上を見守っています。"
+                    },
+                    {
+                        id: "aus-4",
+                        name: "ウォンジナ",
+                        originalName: "Wondjina",
+                        type: "god",
+                        categoryLabel: "天候と雲の精霊",
+                        culture: "キンバリー地方",
+                        symbol: "大雨・雲・雷・生殖",
+                        icon: "fa-cloud-showers-heavy",
+                        shortDesc: "口のない顔で岩絵に描かれる天候の精霊。",
+                        fullDesc: "口を描くと大雨が降り続いて世界が洪水に呑まれるとされるため、常に口のない神秘的な顔で描かれます。雨季の到来と恵みの雨をもたらし、生殖や命の循環をコントロールします。"
+                    },
+                    {
+                        id: "aus-5",
+                        name: "エインガナ",
+                        originalName: "Eingana",
+                        type: "god",
+                        categoryLabel: "創造の母神",
+                        culture: "北部アーネムランド",
+                        symbol: "万物の母・水流・命の出産の源",
+                        icon: "fa-seedling",
+                        shortDesc: "すべての生き物や人間の母とされる巨蛇神。",
+                        fullDesc: "太古の昔、自らの体内にあらゆる生命（人間、動物、鳥、水草）を宿していた水辺の母神。痛みに耐かねて命を吐き出したことで世界に生き物が溢れ出たと伝えられます。"
+                    },
+                    // Evil Spirits / Monsters
+                    {
+                        id: "aus-6",
+                        name: "バニップ",
+                        originalName: "Bunyip",
+                        type: "monster",
+                        categoryLabel: "水辺の沼怪獣",
+                        culture: "オーストラリア全域伝承",
+                        symbol: "底なし沼・咆哮・水難",
+                        icon: "fa-hippo",
+                        shortDesc: "沼地や湿原に潜み人間を襲う伝説の怪獣。",
+                        fullDesc: "夜間に耳を刺すような不気味な叫び声をあげ、危険な水辺に近づく子供や大人を引きずり込んで呑み込む怪物。自然の恐怖と危険な水辺への警戒を教える象徴です。"
+                    },
+                    {
+                        id: "aus-7",
+                        name: "ヤラ＝マ＝ワイ＝クー",
+                        originalName: "Yara-ma-yha-who",
+                        type: "monster",
+                        categoryLabel: "樹上の吸血怪魔",
+                        culture: "南東部アボリジニ伝承",
+                        symbol: "無花果の木・吸盤・吸血",
+                        icon: "fa-spider",
+                        shortDesc: "頭が大きく赤い小男の姿をした吸血モンスター。",
+                        fullDesc: "無花果の木の上に身を潜め、下を通る旅人に飛びかかります。手足の指先にある吸盤で獲物の血液を吸い尽くした後、丸呑みにして消化し、後から吐き出すとされる不気味な存在です。"
+                    },
+                    {
+                        id: "aus-8",
+                        name: "モコイ",
+                        originalName: "Mokoi",
+                        type: "monster",
+                        categoryLabel: "狂気と病の悪霊",
+                        culture: "アーネムランド",
+                        symbol: "黒魔術・影・病死",
+                        icon: "fa-skull",
+                        shortDesc: "人間に病や精神異常をもたらす影の悪霊。",
+                        fullDesc: "シャーマン（伝統的治療師）の目を盗み、人々の精神を乱して仲間同士の争いを誘発させたり、予期せぬ怪我や重病を引き起こす邪悪な精神体とみなされています。"
+                    },
+                    {
+                        id: "aus-9",
+                        name: "フーウィー",
+                        originalName: "Whowhie",
+                        type: "monster",
+                        categoryLabel: "巨大トカゲ魔獣",
+                        culture: "マリー川流域伝承",
+                        symbol: "洞窟・大食・足音の恐怖",
+                        icon: "fa-dragon",
+                        shortDesc: "村一つを吞み込んだとされる巨大トカゲの怪物。",
+                        fullDesc: "6本の足を持ち、体長が数メートルにも及ぶ怪獣。非常に大食漢で、静かに忍び寄り村中の人間を一晩で食い尽くしたとされる伝説を持ちます。"
+                    },
+                    {
+                        id: "aus-10",
+                        name: "ワイゴデル",
+                        originalName: "Waigodel",
+                        type: "monster",
+                        categoryLabel: "禁忌の怨霊",
+                        culture: "オーストラリア中央部",
+                        symbol: "タブー侵犯・肉体腐食・祟り",
+                        icon: "fa-ghost",
+                        shortDesc: "聖地の禁忌を破った者に病を感染させる怨念。",
+                        fullDesc: "立ち入りが禁じられた聖域やドリーミングの掟を破った不敬な者に対し、体内から激しい痛みを伴う病気や骨の腐食を引き起こす怨念的な追跡者です。"
+                    }
+                ]
+            },
+            polynesia: {
+                title: "ポリネシア",
+                badge: "Region 02",
+                mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d30000000!2d-155.5828!3d19.8968!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7caf2fca452f4477%3A0xe5cd882c505342a3!2sHawaii%2C%20USA!5e1!3m2!1sja!2sjp!4v1710000000000",
+                mapLabel: "ポリネシア三角地帯 (ハワイ・マオリ・タヒチ)",
+                description: "ハワイ、ニュージーランド（マオリ）、タヒチ、イースター島などを結ぶ広大な海洋文化圈。「マナ（神聖な力）」に基づき、天地創造や航海、自然現象を司る強大な神々が崇拝されています。",
+                entities: [
+                    // Gods
+                    {
+                        id: "poly-1",
+                        name: "タネ",
+                        originalName: "Tāne / Tāne-mahuta",
+                        type: "god",
+                        categoryLabel: "森と光の創世神",
+                        culture: "マオリ / ポリネシア全域",
+                        symbol: "大樹・鳥・光と空間",
+                        icon: "fa-tree",
+                        shortDesc: "天地を引き離し、世界に光をもたらした大森林の神。",
+                        fullDesc: "密着していた父なる天（ランギ）と母なる地（パパ）を強靭な脚力で押し開き、この世に広大な空間と光をもたらした偉大な創世神。木々や鳥たちの父親でもあります。"
+                    },
+                    {
+                        id: "poly-2",
+                        name: "タンガロア",
+                        originalName: "Tangaroa / Kanaloa",
+                        type: "god",
+                        categoryLabel: "海洋の最高神",
+                        culture: "ポリネシア全域",
+                        symbol: "大海原・魚・潮流・航海",
+                        icon: "fa-fish",
+                        shortDesc: "海洋と生物すべての源である海の大神。",
+                        fullDesc: "太平洋の広大な海そのものを司る神。あらゆる海洋生物の創生者であり、スターナビゲーション（星間航海術）を行う航海者たちの最大の守護神として信仰されました。"
+                    },
+                    {
+                        id: "poly-3",
+                        name: "ロノ",
+                        originalName: "Lono",
+                        type: "god",
+                        categoryLabel: "豊穣と平和の神",
+                        culture: "ハワイ諸島",
+                        symbol: "慈雨・風・農業・マカヒキ祭",
+                        icon: "fa-wheat-awn",
+                        shortDesc: "恵みの雨と豊かな収穫をもたらす平和の神。",
+                        fullDesc: "雨雲を呼んで作物を育む豊穣神。毎年収穫の時期に開かれる「マカヒキ」の期間中、ハワイでは一切の戦争が固く禁じられ、平和とスポーツが祝われました。"
+                    },
+                    {
+                        id: "poly-4",
+                        name: "マウイ",
+                        originalName: "Māui",
+                        type: "god",
+                        categoryLabel: "変幻自在の文化英雄",
+                        culture: "ポリネシア全域伝承",
+                        symbol: "魔法の釣り針・太陽・火の獲得",
+                        icon: "fa-anchor",
+                        shortDesc: "海から島々を釣り上げた伝説の半神半人。",
+                        fullDesc: "魔法の釣り針「マナイアカラニ」で海底からニュージーランドやハワイの島々を釣り上げ、捕まえた太陽の動きを遅くして昼を長くするなど、人々のために数々の奇跡を起こした英雄。"
+                    },
+                    {
+                        id: "poly-5",
+                        name: "クー",
+                        originalName: "Kū / Kūkaʻilimoku",
+                        type: "god",
+                        categoryLabel: "戦いと統率の神",
+                        culture: "ハワイ諸島",
+                        symbol: "勝利・力・木彫りの神像",
+                        icon: "fa-shield-halberd",
+                        shortDesc: "王族や戦士たちを勝利へ導く強力な戦神。",
+                        fullDesc: "強靭な意志と統率力、国家の安泰を求める戦いの神。厳格な儀式とともに祀られ、勇敢な戦士たちに不屈の生命力と戦闘の力を授けると信じられました。"
+                    },
+                    // Evil Spirits / Monsters
+                    {
+                        id: "poly-6",
+                        name: "フィロ",
+                        originalName: "Whiro / Hiro",
+                        type: "monster",
+                        categoryLabel: "暗黒と地下の邪神",
+                        culture: "マオリ / タヒチ伝承",
+                        symbol: "地下世界・疫病・盗み・影",
+                        icon: "fa-skull-crossbones",
+                        shortDesc: "病と悪事、地下世界を統括する闇の神。",
+                        fullDesc: "光の神タネの最大の宿敵。邪悪な悪霊（マフト）を操って人々に病気や老い、死をもたらし、盗賊や暗黒の企みを唆す凶悪な存在として恐れられています。"
+                    },
+                    {
+                        id: "poly-7",
+                        name: "ペレ (荒ぶる側面)",
+                        originalName: "Pele",
+                        type: "monster",
+                        categoryLabel: "破壊の火山女神",
+                        culture: "ハワイ（キラウエア）",
+                        symbol: "溶岩・噴火・狂気・激怒",
+                        icon: "fa-volcano",
+                        shortDesc: "怒りで村や森を溶岩で焼き尽くす荒ぶる女神。",
+                        fullDesc: "ハワイの火山の女神。嫉妬深く気まぐれな性格を持ち、一度怒ると大規模な噴火と流れる溶岩流を引き起こして集落を一瞬で破壊し尽くす猛威の象徴です。"
+                    },
+                    {
+                        id: "poly-8",
+                        name: "タホラハ",
+                        originalName: "Tahoraha",
+                        type: "monster",
+                        categoryLabel: "深海の巨大海獣",
+                        culture: "ポリネシア深海伝承",
+                        symbol: "高波・船の転覆・貪食",
+                        icon: "fa-water",
+                        shortDesc: "カヌーを襲い船員を呑み込む深海の怪物。",
+                        fullDesc: "外洋に潜む巨大なトカゲ兼サメのような魔獣。嵐に乗じて船の底に体当たりをしてカヌーを覆し、投げ出された航海者たちをことごとく平らげると恐れられました。"
+                    },
+                    {
+                        id: "poly-9",
+                        name: "トゥポ",
+                        originalName: "Tupo",
+                        type: "monster",
+                        categoryLabel: "暴風津波の魔神",
+                        culture: "ポリネシア東部",
+                        symbol: "サイクロン・津波・破壊の歓喜",
+                        icon: "fa-wind",
+                        shortDesc: "破滅的な暴風雨と高潮を引き起こす魔神。",
+                        fullDesc: "平穏な海を一変させ、猛烈な台風や大津波を起こすことに歓喜を感じる悪徳の精霊。海岸沿いの集落やヤシの木を根こそぎ薙ぎ倒します。"
+                    },
+                    {
+                        id: "poly-10",
+                        name: "ケハル",
+                        originalName: "Keharu",
+                        type: "monster",
+                        categoryLabel: "精神を蝕む夢魔",
+                        culture: "ポリネシア中央部",
+                        symbol: "悪夢・衰弱・魂の掠奪",
+                        icon: "fa-bed",
+                        shortDesc: "眠る人間の夢に忍び込み正気を奪う精霊。",
+                        fullDesc: "夜中に忍び寄り、眠っている人間の口から魂を吸い出す夢魔。これに憑依された人間は酷い悪夢にうなされ、日ごとに痩せ細って死に至ると言われます。"
+                    }
+                ]
+            },
+            melanesia: {
+                title: "メラネシア",
+                badge: "Region 03",
+                mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10000000!2d150.0000!3d-9.0000!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x69f0000000000001%3A0x8900000000000000!2sPapua%20New%20Guinea!5e1!3m2!1sja!2sjp!4v1710000000000",
+                mapLabel: "メラネシア諸島 (パプアニューギニア・ソロモン・バヌアツ)",
+                description: "パプアニューギニア、ソロモン諸島、バヌアツ、フィジーなどの地域。精霊（トポヌ／フィゴナ）や祖先霊への崇拝が根強く、善意ある創造者と愚鈍・邪悪な対立者の二元論的伝承が多く存在します。",
+                entities: [
+                    // Gods
+                    {
+                        id: "mela-1",
+                        name: "ハトゥイブワリ",
+                        originalName: "Hatuibwari",
+                        type: "god",
+                        categoryLabel: "頭脳派蛇創世神",
+                        culture: "ソロモン諸島 (San Cristobal)",
+                        symbol: "人頭蛇身・土からの創造・太陽",
+                        icon: "fa-staff",
+                        shortDesc: "人間の頭と四つの羽を持つ翼ある巨大蛇神。",
+                        fullDesc: "粘土を捏ねて最初の人間を作り出し、太陽の光と熱を与えて生命を吹き込んだとされる賢明な創造神。作物の実りを促し、生き物に知恵を授けたと敬われています。"
+                    },
+                    {
+                        id: "mela-2",
+                        name: "タガロ",
+                        originalName: "Tagaro",
+                        type: "god",
+                        categoryLabel: "知恵の文化英雄",
+                        culture: "バヌアツ諸島",
+                        symbol: "火の獲得・カヌー制作・秩序",
+                        icon: "fa-lightbulb",
+                        shortDesc: "文明と道具の作り方を人々に教えた知恵の神。",
+                        fullDesc: "愚鈍な兄弟（スワリコ）の引き起こす数々の失敗や邪魔を正し、人々に火の扱い方、頑丈なカヌーの建造法、タロイモの栽培技術などを伝授した文化の父です。"
+                    },
+                    {
+                        id: "mela-3",
+                        name: "プア・タンガル",
+                        originalName: "Pua Tangaro",
+                        type: "god",
+                        categoryLabel: "守護鮫神",
+                        culture: "ソロモン諸島 / フィジー",
+                        symbol: "白鮫・海難救助・大漁",
+                        icon: "fa-shield-heart",
+                        shortDesc: "溺れる漁師を背に乗せて救う友好的なサメ神。",
+                        fullDesc: "巨大な白いサメの姿で現れ、海で遭難した村人や漁師を背中に乗せて安全な海岸まで送り届けてくれる、海の優しき守護精霊として信仰されています。"
+                    },
+                    {
+                        id: "mela-4",
+                        name: "ウォル",
+                        originalName: "Wol",
+                        type: "god",
+                        categoryLabel: "太陽と作物の神",
+                        culture: "ニューギニア沿岸部",
+                        symbol: "日光・畑の実り・生命力",
+                        icon: "fa-sun",
+                        shortDesc: "作物を急速に生長させる力を持つ太陽の神。",
+                        fullDesc: "空から大地全体に温かな光を注ぎ込み、ヤムイモやバナナの作物を豊かに成長させる神。人々に健やかな活力と病気に対する免疫を与える存在です。"
+                    },
+                    {
+                        id: "mela-5",
+                        name: "カハシ",
+                        originalName: "Kahasi",
+                        type: "god",
+                        categoryLabel: "一族の祖先保護霊",
+                        culture: "メラネシア全域 (トポヌ)",
+                        symbol: "血縁・平和・集落の防衛",
+                        icon: "fa-hands-holding-child",
+                        shortDesc: "一族の家々を影から優しく見守る善意の祖先霊。",
+                        fullDesc: "亡くなった祖先の崇高な魂が精霊化した存在。夜間に集落の周囲を巡回し、外からの悪霊や悪意ある呪術師の侵入を防いで一族の平和を保ちます。"
+                    },
+                    // Evil Spirits / Monsters
+                    {
+                        id: "mela-6",
+                        name: "ブアタ",
+                        originalName: "Buata",
+                        type: "monster",
+                        categoryLabel: "狂暴な巨猪魔獣",
+                        culture: "ニューブリテン島",
+                        symbol: "巨大な牙・突進・食人",
+                        icon: "fa-paw",
+                        shortDesc: "鋭い牙で森林の旅人を噛み殺す人喰い猪。",
+                        fullDesc: "家ほどの大きさを持つ怪物のような猪。人間の言葉を理解する悪知恵を持ち、森林深く迷い込んだ狩人を待ち伏せしては鋭い牙で噛み砕いて食い尽くします。"
+                    },
+                    {
+                        id: "mela-7",
+                        name: "タマテ",
+                        originalName: "Tamate",
+                        type: "monster",
+                        categoryLabel: "秘密儀式の暗黒霊",
+                        culture: "バンクス諸島",
+                        symbol: "仮面・報復・秘密結社",
+                        icon: "fa-mask",
+                        shortDesc: "村の掟や秘密を破った者に死を与える闇の精霊。",
+                        fullDesc: "クモの巣や葉で作られた不気味な仮面をかぶり、秘密結社の教義や社会の規範を破った人物を夜陰に乗じて抹殺しに来る恐怖の処刑者です。"
+                    },
+                    {
+                        id: "mela-8",
+                        name: "ミロ",
+                        originalName: "Miro",
+                        type: "monster",
+                        categoryLabel: "精気吸い尽くしの凶霊",
+                        culture: "フィジー諸島 / メラネシア",
+                        symbol: "深い森の闇・精気吸引・衰弱",
+                        icon: "fa-disease",
+                        shortDesc: "森に立ち入った者の生き血と精気を吸う悪霊。",
+                        fullDesc: "影のように存在し、森の中を一人で歩く人間の背後に取り憑きます。被害者は気づかないうちに気力と命の精気を吸い取られ、数日中に重病へと落ち入ります。"
+                    },
+                    {
+                        id: "mela-9",
+                        name: "アガナ",
+                        originalName: "Agana",
+                        type: "monster",
+                        categoryLabel: "流血と争いの邪神",
+                        culture: "ソロモン諸島内陸部",
+                        symbol: "同士討ち・血生臭さ・憎悪",
+                        icon: "fa-khanda",
+                        shortDesc: "人々に猜疑心を植え付け殺し合わせる血の邪神。",
+                        fullDesc: "戦いや血の匂いを好む邪悪な存在。平和な村々に乗り込み、住民の心に嫉妬や強い猜疑心を芽生えさせ、かつての友人同士を流血の惨事へと駆り立てます。"
+                    },
+                    {
+                        id: "mela-10",
+                        name: "ヴォボコ",
+                        originalName: "Voboko",
+                        type: "monster",
+                        categoryLabel: "飢饉と凶作の疫病神",
+                        culture: "バヌアツ内陸部",
+                        symbol: "日照り・作物の腐敗・飢餓",
+                        icon: "fa-bugs",
+                        shortDesc: "畑の作物を一夜にして枯らす凶作の悪魔。",
+                        fullDesc: "干ばつや害虫の発生を引き起こす不吉な精霊。農民が大切に育てたタロイモやヤムイモの根を腐らせ、集落全体を凄惨な飢餓の恐怖に陥れます。"
+                    }
+                ]
+            },
+            micronesia: {
+                title: "ミクロネシア",
+                badge: "Region 04",
+                mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d8000000!2d134.5825!3d7.5150!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3282f4284d7a4627%3A0xe5cd882c505342a3!2sPalau!5e1!3m2!1sja!2sjp!4v1710000000000",
+                mapLabel: "ミクロネシア環礁地域 (パラオ・グアム・ヤップ)",
+                description: "パラオ、グアム（チャモロ）、ヤップ、チュークなどの小さな環礁群。限られた島環境と広大な海に囲まれており、海洋資源の創世神話や台風・水難の恐怖を体現した悪霊伝承が特徴です。",
+                entities: [
+                    // Gods
+                    {
+                        id: "micro-1",
+                        name: "ラタク",
+                        originalName: "Latmikaik",
+                        type: "god",
+                        categoryLabel: "太古の海洋母神",
+                        culture: "パラオ諸島",
+                        symbol: "魚の産卵・島々の誕生・原初の海",
+                        icon: "fa-fish-fins",
+                        shortDesc: "パラオの島々と魚たちを生み出した太古の母神。",
+                        fullDesc: "混沌とした太古の海に現れた巨大な海洋の母。彼女の身体から無数の魚たちが産み落とされ、その後にパラオの緑豊かな島々が誕生したと伝えられる創世の女神です。"
+                    },
+                    {
+                        id: "micro-2",
+                        name: "プンタン",
+                        originalName: "Puntan",
+                        type: "god",
+                        categoryLabel: "自己犠牲の創世神",
+                        culture: "グアム (チャモロ伝承)",
+                        symbol: "太陽と月・大地・身体の奉納",
+                        icon: "fa-globe",
+                        shortDesc: "自らの肉体を分解して世界を作り上げた創造神。",
+                        fullDesc: "妹フアンと共に世界の創造を計画し、自らの死後に目を「太陽と月」に、胸を「大地」に、眉毛を「虹」へと変化させるよう妹に遺言を残して世界を完成させた神。"
+                    },
+                    {
+                        id: "micro-3",
+                        name: "フアン",
+                        originalName: "Fu'una",
+                        type: "god",
+                        categoryLabel: "人間誕生の女神",
+                        culture: "グアム (チャモロ伝承)",
+                        symbol: "赤い土・最初の人間・岩",
+                        icon: "fa-person-breastfeeding",
+                        shortDesc: "兄の肉体から自然を創り、土から人間を生んだ神。",
+                        fullDesc: "兄プンタンの肉体要素を世界の気象や地理へと変えた後、自らの持つ聖なる力と赤い土を混ぜ合わせて最初の人間を作り出し、最後は恋人の岩（Fouha Rock）となった女神。"
+                    },
+                    {
+                        id: "micro-4",
+                        name: "オロファト",
+                        originalName: "Olofat / Olfat",
+                        type: "god",
+                        categoryLabel: "変幻自在のトリックスター",
+                        culture: "チューク / ヤップ諸島",
+                        symbol: "火の伝来・変身・悪戯と知恵",
+                        icon: "fa-fire",
+                        shortDesc: "天界から地上へ「火」をもたらした文化英雄。",
+                        fullDesc: "天界の最高神の息子でありながら悪戯好きなトリックスター。鳥や魚に姿を変えて人間界を駆け巡り、神々から秘密裏に奪った「火」を人々に与えて文明を発展させました。"
+                    },
+                    {
+                        id: "micro-5",
+                        name: "ルーク",
+                        originalName: "Luk / Lugeilang",
+                        type: "god",
+                        categoryLabel: "天界の最高秩序神",
+                        culture: "ミクロネシア全域",
+                        symbol: "天界の法・生命の誕生・調和",
+                        icon: "fa-scale-balanced",
+                        shortDesc: "天界の最上層から世界の調和を保つ最高神。",
+                        fullDesc: "最上の天界に君臨し、命の誕生や季節の巡り、海の潮流が正しく調和して機能するよう見守る高潔な神。人々の道徳やルール違反を厳しく監視しています。"
+                    },
+                    // Evil Spirits / Monsters
+                    {
+                        id: "micro-6",
+                        name: "ガダオの怪魚",
+                        originalName: "Gadao's Sea Monster",
+                        type: "monster",
+                        categoryLabel: "サンゴ礁の巨大怪魚",
+                        culture: "グアム・チャモロ伝承",
+                        symbol: "大波・カヌー破壊・鋭い歯",
+                        icon: "fa-locust",
+                        shortDesc: "リーフ周辺で舟を襲い噛み砕く深海魔獣。",
+                        fullDesc: "浅瀬のサンゴ礁の外側に潜み、漁に出た舟に向かって強烈な体当たりをして打ち砕きます。鋭いギザギザの歯で船員を海へ引きずり込んで呑み込む恐ろしい怪物です。"
+                    },
+                    {
+                        id: "micro-7",
+                        name: "タプロ",
+                        originalName: "Tapuro",
+                        type: "monster",
+                        categoryLabel: "呪術の邪悪な悪霊",
+                        culture: "カロリン諸島",
+                        symbol: "呪い・毒・伝染病",
+                        icon: "fa-skull-crossbones",
+                        shortDesc: "呪術師を通じて他者に疫病を与える悪霊。",
+                        fullDesc: "邪悪な呪術師の召喚に応じ、ターゲットに定められた人間やその家族に対して突然の発熱、激しい皮膚の爛れ、衰弱をもたらす忌まわしい怨念体です。"
+                    },
+                    {
+                        id: "micro-8",
+                        name: "アニティ (荒ぶる霊)",
+                        originalName: "Aniti (Evil Aspects)",
+                        type: "monster",
+                        categoryLabel: "漂泊の不快な怨霊",
+                        culture: "マリアナ諸島 (グアム・サイパン)",
+                        symbol: "夜間の怪異・ポルターガイスト・事故",
+                        icon: "fa-ghost",
+                        shortDesc: "正しく供養されず狂暴化した無念の死者霊。",
+                        fullDesc: "チャモロ伝承における先祖の霊（アニティ）のうち、戦いや事故で不念の死を遂げ供養されなかった怨霊。夜間に家々を揺らし、旅人を足を踏み外させて崖から落とします。"
+                    },
+                    {
+                        id: "micro-9",
+                        name: "セラップ",
+                        originalName: "Selap",
+                        type: "monster",
+                        categoryLabel: "台風と高潮の破壊魔",
+                        culture: "ヤップ / カロリン諸島",
+                        symbol: "猛烈な台風・塩害・家屋全壊",
+                        icon: "fa-tornado",
+                        shortDesc: "環礁の島々を一瞬で壊滅させる大気の悪魔。",
+                        fullDesc: "巨大な台風やサイクロンを発生させる暴風の怪物。せっかく作られたヤシの木や家屋を根こそぎ薙ぎ倒し、塩水を畑に撒き散らして島を壊滅状態に追い込みます。"
+                    },
+                    {
+                        id: "micro-10",
+                        name: "モガル",
+                        originalName: "Mogal",
+                        type: "monster",
+                        categoryLabel: "海底洞窟の魔物",
+                        culture: "パラオ諸島",
+                        symbol: "暗黒の洞窟・引き込み・沈没",
+                        icon: "fa-compact-disc",
+                        shortDesc: "潜水する者を海底洞窟へ引きずり込む魔物。",
+                        fullDesc: "パラオのブルーホールや海底洞窟の奥深くに身を潜めている触手を持つ暗黒の怪物。素潜りで貝や魚を獲るダイバーの足をつかみ、二度と浮上させないよう水中深く引き引き込みます。"
+                    }
+                ]
+            }
+        };
+
+        // State variables
+        let currentRegionKey = 'australia';
+        let currentCategoryFilter = 'all';
+        let currentSearchQuery = '';
+
+        // DOM Elements
+        const entitiesGrid = document.getElementById('entitiesGrid');
+        const emptyState = document.getElementById('emptyState');
+        const mapIframe = document.getElementById('googleMapIframe');
+        const mapLabel = document.getElementById('mapLabel');
+        const regionBadge = document.getElementById('regionBadge');
+        const regionTitle = document.getElementById('regionTitle');
+        const regionDesc = document.getElementById('regionDesc');
+        const entityModal = document.getElementById('entityModal');
+        const modalContent = document.getElementById('modalContent');
+
+        // Initialize App
+        window.addEventListener('DOMContentLoaded', () => {
+            renderRegionData();
+        });
+
+        // Switch Region Function
+        function selectRegion(regionKey) {
+            if (!mythologyData[regionKey]) return;
+            currentRegionKey = regionKey;
+
+            // Update Tab UI States
+            document.querySelectorAll('.region-tab').forEach(tab => {
+                tab.classList.remove('active', 'border-sand-400', 'bg-sand-100', 'text-sand-900', 'shadow-sm');
+                tab.classList.add('border-sand-200', 'bg-white', 'text-sand-800');
+            });
+            const activeTab = document.getElementById(`tab-${regionKey}`);
+            if (activeTab) {
+                activeTab.classList.remove('border-sand-200', 'bg-white', 'text-sand-800');
+                activeTab.classList.add('active', 'border-sand-400', 'bg-sand-100', 'text-sand-900', 'shadow-sm');
+            }
+
+            renderRegionData();
+        }
+
+        // Render current region header, map, and cards
+        function renderRegionData() {
+            const data = mythologyData[currentRegionKey];
+
+            // Update Map and Info
+            mapIframe.src = data.mapUrl;
+            mapLabel.textContent = data.mapLabel;
+            regionBadge.textContent = data.badge;
+            regionTitle.textContent = data.title;
+            regionDesc.textContent = data.description;
+
+            // Render Entity Cards
+            filterAndRenderCards();
+        }
+
+        // Set Filter Category (All / Gods / Monsters)
+        function setCategoryFilter(category) {
+            currentCategoryFilter = category;
+
+            // Update filter button UI
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('bg-sand-900', 'text-white', 'shadow-sm');
+                btn.classList.add('bg-white', 'text-sand-800', 'border-sand-300');
+            });
+
+            const activeBtn = document.getElementById(`filter-${category}`);
+            if (activeBtn) {
+                activeBtn.classList.remove('bg-white', 'text-sand-800', 'border-sand-300');
+                activeBtn.classList.add('bg-sand-900', 'text-white', 'shadow-sm');
+            }
+
+            filterAndRenderCards();
+        }
+
+        // Search Input Handler
+        function handleSearch() {
+            currentSearchQuery = document.getElementById('searchInput').value.trim().toLowerCase();
+            filterAndRenderCards();
+        }
+
+        // Reset Filters
+        function resetFilters() {
+            document.getElementById('searchInput').value = '';
+            currentSearchQuery = '';
+            setCategoryFilter('all');
+        }
+
+        // Filter & Render Logic
+        function filterAndRenderCards() {
+            const region = mythologyData[currentRegionKey];
+            let list = region.entities;
+
+            // Category Filter
+            if (currentCategoryFilter === 'god') {
+                list = list.filter(item => item.type === 'god');
+            } else if (currentCategoryFilter === 'monster') {
+                list = list.filter(item => item.type === 'monster');
+            }
+
+            // Search Filter
+            if (currentSearchQuery) {
+                list = list.filter(item => 
+                    item.name.toLowerCase().includes(currentSearchQuery) ||
+                    item.originalName.toLowerCase().includes(currentSearchQuery) ||
+                    item.culture.toLowerCase().includes(currentSearchQuery) ||
+                    item.shortDesc.toLowerCase().includes(currentSearchQuery) ||
+                    item.symbol.toLowerCase().includes(currentSearchQuery)
+                );
+            }
+
+            // Display or Empty State
+            if (list.length === 0) {
+                entitiesGrid.innerHTML = '';
+                emptyState.classList.remove('hidden');
+                return;
+            }
+
+            emptyState.classList.add('hidden');
+            entitiesGrid.innerHTML = list.map(item => createCardHTML(item)).join('');
+        }
+
+        // Generate HTML for an individual Entity Card
+        function createCardHTML(item) {
+            const isGod = item.type === 'god';
+            const badgeBg = isGod ? 'bg-amber-100 text-amber-900 border-amber-300' : 'bg-red-100 text-red-900 border-red-300';
+            const iconColor = isGod ? 'text-amber-600 bg-amber-50 border-amber-200' : 'text-red-600 bg-red-50 border-red-200';
+            const typeLabel = isGod ? '創世神・善神' : '邪神・魔獣・悪霊';
+
+            return `
+                <div class="bg-white rounded-xl border border-sand-200 p-5 card-hover flex flex-col justify-between shadow-sm relative group">
+                    <div>
+                        <div class="flex items-start justify-between gap-3 mb-3">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-lg flex items-center justify-center text-lg border ${iconColor}">
+                                    <i class="fa-solid ${item.icon}"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-serif font-bold text-lg text-sand-900 leading-tight">${item.name}</h4>
+                                    <span class="text-xs text-sand-800 italic block font-serif">${item.originalName}</span>
+                                </div>
+                            </div>
+                            <span class="px-2.5 py-1 text-xs font-bold rounded-md border ${badgeBg} whitespace-nowrap">
+                                ${typeLabel}
+                            </span>
+                        </div>
+
+                        <div class="space-y-1.5 my-3 text-xs text-sand-800 border-y border-sand-100 py-2.5">
+                            <div class="flex items-center gap-2">
+                                <i class="fa-solid fa-location-dot text-sand-400 w-4 text-center"></i>
+                                <span class="font-semibold text-sand-900">地域・文化:</span>
+                                <span>${item.culture}</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fa-solid fa-gem text-sand-400 w-4 text-center"></i>
+                                <span class="font-semibold text-sand-900">象徴・役割:</span>
+                                <span>${item.symbol}</span>
+                            </div>
+                        </div>
+
+                        <p class="text-xs sm:text-sm text-sand-800 leading-relaxed line-clamp-3 my-2">
+                            ${item.fullDesc}
+                        </p>
+                    </div>
+
+                    <div class="pt-3 mt-2 border-t border-sand-100 flex justify-end">
+                        <button onclick="openModal('${item.id}')" class="text-xs font-bold text-sand-900 hover:text-sand-400 flex items-center gap-1 transition-colors">
+                            詳細・伝承を見る <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Open Modal with Entity Details
+        function openModal(entityId) {
+            const region = mythologyData[currentRegionKey];
+            const item = region.entities.find(e => e.id === entityId);
+            if (!item) return;
+
+            const isGod = item.type === 'god';
+            const badgeBg = isGod ? 'bg-amber-100 text-amber-900 border-amber-300' : 'bg-red-100 text-red-900 border-red-300';
+            const iconColor = isGod ? 'text-amber-600 bg-amber-50 border-amber-300' : 'text-red-600 bg-red-50 border-red-300';
+            const typeLabel = isGod ? '創世神・善神' : '邪神・魔獣・悪霊';
+
+            modalContent.innerHTML = `
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-12 h-12 rounded-xl flex items-center justify-center text-xl border ${iconColor}">
+                        <i class="fa-solid ${item.icon}"></i>
+                    </div>
+                    <div>
+                        <span class="px-2.5 py-0.5 text-xs font-bold rounded-md border ${badgeBg} inline-block mb-1">
+                            ${typeLabel} (${item.categoryLabel})
+                        </span>
+                        <h3 class="text-2xl font-serif font-bold text-sand-900 leading-tight">${item.name}</h3>
+                        <p class="text-xs text-sand-800 italic font-serif">${item.originalName}</p>
+                    </div>
+                </div>
+
+                <div class="bg-beige-100 p-4 rounded-xl border border-sand-200 text-xs text-sand-800 space-y-2 mb-4">
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-earth-oceania text-sand-400 w-4"></i>
+                        <span class="font-bold text-sand-900">文化圈:</span> ${region.title}
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-map-pin text-sand-400 w-4"></i>
+                        <span class="font-bold text-sand-900">地域・民族:</span> ${item.culture}
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-sparkles text-sand-400 w-4"></i>
+                        <span class="font-bold text-sand-900">象徴・権能:</span> ${item.symbol}
+                    </div>
+                </div>
+
+                <div class="space-y-3">
+                    <h4 class="text-sm font-serif font-bold text-sand-900 border-b border-sand-200 pb-1">詳細解説・伝承背景</h4>
+                    <p class="text-xs sm:text-sm text-sand-800 leading-relaxed">
+                        ${item.fullDesc}
+                    </p>
+                </div>
+
+                <div class="mt-6 pt-4 border-t border-sand-200 flex justify-end">
+                    <button onclick="closeModal()" class="px-4 py-2 bg-sand-900 text-white rounded-lg text-xs font-bold hover:bg-sand-800 transition-colors">
+                        閉じる
+                    </button>
+                </div>
+            `;
+
+            entityModal.classList.remove('hidden');
+        }
+
+        // Close Modal
+        function closeModal() {
+            entityModal.classList.add('hidden');
+        }
+
+        // Close Modal on backdrop click
+        entityModal.addEventListener('click', (e) => {
+            if (e.target === entityModal) closeModal();
+        });
+    </script>
+</body>
+</html>
